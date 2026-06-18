@@ -1,0 +1,12 @@
+FROM nginx:alpine
+LABEL maintainer="raghusamarth" \
+project="maven" \
+description="static website served via Nginx"
+RUN rm -rf /usr/share/nginx/html/*
+# Copy static website files into Nginx's serving directory
+COPY src/main/resources/index.html  /usr/share/nginx/html/index.html
+COPY src/main/resources/logo.svg   /usr/share/nginx/html/logo.svg
+# Expose port 80 (Nginx default)
+EXPOSE 80
+# Start Nginx in the foreground (required for Docker)
+CMD ["nginx", "-g", "daemon off;"]
