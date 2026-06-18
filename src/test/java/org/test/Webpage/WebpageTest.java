@@ -7,25 +7,23 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertTrue;
-
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
-ChromeOptions options = new ChromeOptions();
-options.addArguments("--headless=new");
-options.addArguments("--no-sandbox");
-options.addArguments("--disable-dev-shm-usage");
-
-WebDriver driver = new ChromeDriver(options);
 
 public class WebpageTest {
     private static WebDriver driver;
     @BeforeTest
     public void openBrowser() throws InterruptedException {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        Thread.sleep(2000);
-        driver.get("https://raghusamarth.github.io/Maven1/");
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--headless=new");
+    options.addArguments("--no-sandbox");
+    options.addArguments("--disable-dev-shm-usage");
+
+    driver = new ChromeDriver(options);
+
+    driver.manage().window().maximize();
+    Thread.sleep(2000);
+    driver.get("https://raghusamarth.github.io/Maven1/");
     }
     @Test
     public void titleValidationTest(){
